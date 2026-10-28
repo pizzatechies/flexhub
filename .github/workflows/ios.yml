@@ -1,0 +1,55 @@
+name: Build iOS apps (unsigned)
+
+# Builds unsigned iPhone/iPad apps for TenantFlex (tenants) and TenantFlex Manager
+# from the prebuilt web bundles in apps/*/www, on a GitHub-hosted Mac.
+# Outputs per app: an unsigned .ipa (re-sign it to install on devices) and a
+# Simulator build (.app.zip) that runs in Xcode's iOS Simulator without signing.
+
+on:
+  push:
+    branches: [ios-build]
+  workflow_dispatch:
+
+jobs:
+  ios:
+    name: iOS (${{ matrix.app }})
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [tenant, manager]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Select Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app || sudo xcode-select -s "$(ls -d /Applications/Xcode_16*.app | tail -1)"; xcodebuild -version
+      - name: Generate Xcode project
+        working-directory: apps/${{ matrix.app }}
+        run: |
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npm run assets
+          npx cap sync ios
+      - name: Allow plain-http TenantFlex servers (LAN installs)
+        working-directory: apps/${{ matrix.app }}/ios/App/App
+        run: /usr/libexec/PlistBuddy -c "Add :NSAppTransportSecurity:NSAllowsArbitraryLoads bool true" Info.plist
+      - name: Build unsigned .ipa and Simulator app
+        working-directory: apps/${{ matrix.app }}/ios/App
+        run: |
+          set -o pipefail
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build | tail -20
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build-sim CODE_SIGNING_ALLOWED=NO build | tail -5
+          name=$([ "${{ matrix.app }}" = manager ] && echo TenantFlex-Manager || echo TenantFlex)
+          mkdir -p "$GITHUB_WORKSPACE/out/Payload"
+          cp -R build/Build/Products/Release-iphoneos/App.app "$GITHUB_WORKSPACE/out/Payload/"
+          (cd "$GITHUB_WORKSPACE/out" && zip -qry "$name-1.0.0-unsigned.ipa" Payload && rm -rf Payload)
+          (cd build-sim/Build/Products/Release-iphonesimulator && zip -qry "$GITHUB_WORKSPACE/out/$name-1.0.0-simulator.app.zip" App.app)
+          ls -la "$GITHUB_WORKSPACE/out"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app == 'manager' && 'TenantFlex-Manager' || 'TenantFlex' }}-iOS-unsigned
+          path: out/*
+          if-no-files-found: error
