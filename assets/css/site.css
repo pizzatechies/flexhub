@@ -245,3 +245,11 @@ a.dl .btn { align-self: flex-start; }
 .plan-cta { width: 100%; }
 .plan-note { text-align: center; margin-top: 28px; font-size: 14px; }
 @media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } .plan-blurb { min-height: 0; } }
+
+/* App icons */
+.app-icon { width: 58px; height: 58px; border-radius: 14px; flex: none; box-shadow: 0 8px 24px rgba(0, 0, 0, .5), 0 0 0 1px rgba(212, 175, 55, .25); }
+.app-icon.lg { width: 112px; height: 112px; border-radius: 26px; margin: 0 auto; }
+.app-icons { display: flex; justify-content: center; gap: 56px; margin-bottom: 44px; }
+.app-icons figure { margin: 0; text-align: center; }
+.app-icons figcaption { margin-top: 14px; font-weight: 650; }
+.app-icons figcaption span { display: block; color: var(--muted); font-weight: 400; font-size: 14px; }
