@@ -27,6 +27,17 @@
     box.classList.add('open');
   }));
 
+  // Pricing: switch every plan between monthly and annual rates.
+  document.querySelectorAll('.billing-toggle').forEach((toggle) => toggle.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-period]');
+    if (!btn) return;
+    const period = btn.dataset.period;
+    toggle.querySelectorAll('button').forEach((b) => b.classList.toggle('on', b === btn));
+    const scope = toggle.closest('section') || document;
+    scope.querySelectorAll('.plan-price, .plan-per').forEach((el) => { el.textContent = el.dataset[period]; });
+    scope.querySelectorAll('.plan-cta').forEach((a) => { a.href = a.dataset[period]; });
+  }));
+
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();
