@@ -1,7 +1,7 @@
 # TenantFlex iOS build
 
 This branch builds the **TenantFlex** (tenant) and **TenantFlex Manager** iOS apps on a GitHub-hosted Mac.
-It contains only the compiled web bundles (`apps/*/www`), the Capacitor configs and the app icons and splash screens. The app source lives in the private TenantFlex repository.
+It contains only the compiled web bundles (`apps/*/www`), the Capacitor configs and the app icons (gold on black for tenants, black on gold for the Manager) and splash screens. The app source lives in the private TenantFlex repository.
 
 Each push runs `.github/workflows/ios.yml`. Download the results from the run's **Artifacts**:
 
