@@ -4,6 +4,8 @@ The public website for **TenantFlex**: tenancy, billing and payments for busines
 
 - `index.html`: product showcase (tenant app, manager app, payments, billing automation, communication, platforms, FAQ)
 - `features.html`: every screen of both apps
+- `pricing.html`: management subscription rates, billed monthly or annually (prices are set in one place in the page generator)
+- `demo/`: live TenantFlex Manager demo. It's the real app and API running in the browser on PGlite, built from the TenantFlex repo with `npm run build:demo -w web`
 - `contact.html`: contact details (WhatsApp +254 747 354 677, info@pizzatechnologies.co.ke) and the onboarding steps
 
 It's a static site with no build step. Preview it locally with `python3 -m http.server` and open http://localhost:8000.
