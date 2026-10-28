@@ -4,8 +4,7 @@ The public website for **TenantFlex**: tenancy, billing and payments for busines
 
 - `index.html`: product showcase (tenant app, manager app, payments, billing automation, communication, platforms, FAQ)
 - `features.html`: every screen of both apps
-- `download.html`: Android and Windows downloads, plus the setup guide
-- `downloads/`: app installers (`SHA256SUMS.txt` lists their checksums)
+- `contact.html`: contact details (WhatsApp +254 747 354 677, info@pizzatechnologies.co.ke) and the onboarding steps
 
 It's a static site with no build step. Preview it locally with `python3 -m http.server` and open http://localhost:8000.
 

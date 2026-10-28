@@ -1,4 +1,0 @@
-bc473573b0098f8fbd72282d487555cc47c80e47598b22bfb6ba4210fcca2486  TenantFlex-1.0.0.apk
-c64a4fc013ea0146450c54a70f8713270786eab16e0033e8f5b4998af7a370a3  TenantFlex-Manager-1.0.0.apk
-c3be4121653a5b551638ab119d7aabcda3881eaaec4b86a06f5ffc762f4f1bb2  TenantFlex-Manager-Setup-1.0.0.exe
-ecc6767ca7692a5ee0edf144b79f6db0bad1b2d542cc1f168b89821e13416213  TenantFlex-Setup-1.0.0.exe
