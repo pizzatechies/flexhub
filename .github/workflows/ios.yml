@@ -31,6 +31,28 @@ jobs:
           npx cap add ios
           npm run assets
           npx cap sync ios
+      - name: Forward Apple push tokens to the app (needed for push notifications in signed builds)
+        working-directory: apps/${{ matrix.app }}/ios/App/App
+        run: |
+          python3 - <<'PY'
+          import re
+          p = 'AppDelegate.swift'
+          s = open(p).read()
+          if 'capacitorDidRegisterForRemoteNotifications' not in s:
+              hook = '''
+              func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+                  NotificationCenter.default.post(name: .capacitorDidRegisterForRemoteNotifications, object: deviceToken)
+              }
+
+              func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+                  NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)
+              }
+          '''
+              i = s.rstrip().rfind('}')
+              s = s[:i] + hook + s[i:]
+              open(p, 'w').write(s)
+          PY
+          grep -n "RemoteNotifications" AppDelegate.swift
       - name: Allow plain-http TenantFlex servers (LAN installs)
         working-directory: apps/${{ matrix.app }}/ios/App/App
         run: /usr/libexec/PlistBuddy -c "Add :NSAppTransportSecurity:NSAllowsArbitraryLoads bool true" Info.plist

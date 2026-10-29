@@ -29,6 +29,17 @@
       "style": "DARK",
       "backgroundColor": "#000000",
       "overlaysWebView": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_tenantflex",
+      "iconColor": "#D4AF37"
+    },
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
     }
   }
 }
