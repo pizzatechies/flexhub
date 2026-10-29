@@ -62,13 +62,13 @@ EMAIL = 'mailto:info@pizzatechnologies.co.ke?subject=TenantFlex%20enquiry'
 contact_btns = lambda center=False: f'<div class="btns"{" style=\"justify-content:center\"" if center else ""}><a class="btn gold" href="{WA}" target="_blank" rel="noopener">{I("whatsapp")} WhatsApp +254 747 354 677</a><a class="btn outline" href="{EMAIL}">{I("mail")} info@pizzatechnologies.co.ke</a></div>'
 # ---- Subscription rates paid by complex management (KES). Change prices here only.
 PLANS = [
-  dict(name='Starter', units='Up to 20 units', monthly=4500, annual=45000, featured=False,
+  dict(name='Starter', units='Up to 20 units', monthly=5000, annual=50000, featured=False,
        blurb='For small plazas, markets and office blocks.',
        items=['TenantFlex + TenantFlex Manager on web, Windows, Android &amp; iOS', 'M-Pesa, Airtel Money, T-Kash, card &amp; bank transfer', 'Instant receipts, rent &amp; utility billing', 'Messaging, notices &amp; reminders', '1 manager account', 'WhatsApp &amp; email support']),
-  dict(name='Business', units='Up to 75 units', monthly=12000, annual=120000, featured=True,
+  dict(name='Business', units='Up to 75 units', monthly=15000, annual=150000, featured=True,
        blurb='For busy malls and business complexes.',
        items=['Everything in Starter', 'Up to 5 manager accounts', 'Meter-reading billing for all units', 'Bank-transfer confirmation queue', 'Onboarding &amp; training session', 'Priority WhatsApp support']),
-  dict(name='Enterprise', units='Unlimited units', monthly=25000, annual=250000, featured=False,
+  dict(name='Enterprise', units='Unlimited units', monthly=30000, annual=300000, featured=False,
        blurb='For property groups running several complexes.',
        items=['Everything in Business', 'Multiple complexes', 'Unlimited manager accounts', 'Help connecting your M-Pesa / bank gateway', 'On-site training', 'Dedicated account manager']),
 ]
