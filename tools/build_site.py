@@ -279,7 +279,7 @@ index = f'''
             ('A menu on any phone:', 'balance, unpaid bills, pay by M-Pesa, last receipt by SMS, a message to management and the latest notices.'),
             ('Pay by M-Pesa from the menu:', 'everything due, the oldest bill or any amount. The M-Pesa PIN prompt arrives as soon as the menu closes, and the receipt comes by SMS.'),
             ('SMS that reaches them:', 'new bills, due dates, overdue reminders, receipts and replies arrive by SMS, with your short code to pay.'),
-            ('Set up by management:', 'add a tenant with just a name and phone number. They get a welcome SMS telling them which code to dial.'),
+            ('Easy to join:', 'add a tenant with just a name and phone number, or let them dial your code and ask to register. You approve each request, and they get an SMS telling them they\'re in.'),
           ])}
           <p class="muted" style="font-size:14px">Runs on your complex's own Africa's Talking account, connected in TenantFlex Manager → Settings → SMS &amp; USSD. Africa's Talking bills SMS and USSD sessions to that account.</p>
         </div>
@@ -365,7 +365,7 @@ index = f'''
       <details><summary>Can we use a currency other than Kenyan Shillings?</summary><p>Yes. KES is the default, and each complex can choose its own currency (USD, UGX, TZS, RWF and others) when it registers, or later in Settings.</p></details>
       <details><summary>Can one company run several complexes?</summary><p>Yes. Each complex is registered separately with its own tenants, units, rates, bank account and invite code.</p></details>
       <details><summary>Do tenants have to install an app?</summary><p>No. They can use the web version in any browser, or install the Android, iOS or Windows app, with the same account on every device. Tenants who don't want an app at all can use USSD and SMS: management adds them with their phone number, and they dial the complex's short code from any phone to check bills and pay by M-Pesa.</p></details>
-      <details><summary>How does a tenant start using USSD?</summary><p>Management adds them in TenantFlex Manager → Tenants → Add tenant → Phone only (SMS &amp; USSD), with their name and phone number. TenantFlex sends a welcome SMS with the complex's short code. When they dial it, TenantFlex recognises their number and shows their own bills. Numbers that management hasn't added are turned away.</p></details>
+      <details><summary>How does a tenant start using USSD?</summary><p>Two ways. Management can add them in TenantFlex Manager → Tenants → Add tenant → Phone only (SMS &amp; USSD), with their name and phone number, and TenantFlex sends a welcome SMS with the complex's short code. Or the tenant dials the short code themselves and asks to register with their name and shop or unit number. The request waits in TenantFlex Manager until management approves it, and the tenant is told by SMS. Once registered, TenantFlex recognises their number and shows their own bills. Nobody sees an account until management approves them.</p></details>
       <details><summary>Who pays for TenantFlex?</summary><p>The complex management pays one subscription per complex, monthly or annually (annual billing gets 2 months free). Tenants download and use the TenantFlex app for free.</p></details>
       <details><summary>Where is our data stored?</summary><p>On your own TenantFlex server, in a PostgreSQL database. That can be an office PC, your own server or a cloud host.</p></details>
     </div>
