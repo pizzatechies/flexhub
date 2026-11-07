@@ -126,7 +126,7 @@ index = f'''
       <div class="hero-tags">
         <span class="tag"><b>M-Pesa</b> · Airtel Money · T-Kash · Card · Bank</span>
         <span class="tag">Kenyan Shilling <b>(KES)</b> by default</span>
-        <span class="tag"><b>Web</b> · Windows · Android · iOS</span>
+        <span class="tag"><b>Web</b> · Windows · Android · iOS · <b>USSD</b></span>
       </div>
     </div>
     <div class="hero-visual">
@@ -195,7 +195,7 @@ index = f'''
         ('Tenants &amp; units:', 'invite codes, tenant statements, unit assignments, rent and meter readings.'),
         ('Billing:', 'monthly rent runs, meter readings that turn into utility bills automatically, and one-off charges to one tenant or everyone.'),
         ('Payments:', 'every payment as it happens. Confirm bank transfers, and record cash or cheques with instant receipts.'),
-        ('Communication:', 'a message inbox for every tenant, and notices that reach every tenant at once.'),
+        ('Communication:', 'a message inbox for every tenant, notices that reach every tenant at once, and SMS for tenants without the app.'),
       ])}
       <div class="btns" style="margin-top:8px"><a class="btn gold" href="demo/manager/">{I('dashboard')} Open the management demo {I('arrow')}</a></div>
       <p class="muted" style="font-size:14px">The real TenantFlex Manager running in your browser with a sample complex. No sign-up needed.</p>
@@ -256,13 +256,38 @@ index = f'''
       <p class="lead">No more scattered calls and texts. Every conversation sits next to the tenant's account.</p>
       {checks([
         ('Direct messages:', 'repairs, questions and complaints, with read receipts.'),
-        ('Notices:', 'parking closures, water interruptions and meetings, sent to every tenant\'s app at once.'),
-        ('Notifications:', 'new bills, due dates, overdue reminders, receipts and replies, in the app and on the device.'),
+        ('Notices:', 'parking closures, water interruptions and meetings, sent to every tenant at once.'),
+        ('Notifications:', 'new bills, due dates, overdue reminders, receipts and replies, in the app, on the device, and by SMS for tenants without the app.'),
       ])}
     </div>
     <div class="phones reveal">
       {phone('tenant-chat', 'Tenant chatting with management')}
       {phone('manager-phone', 'Manager app on a phone')}
+    </div>
+  </div>
+</section>
+
+<section id="ussd" style="padding-top:40px">
+  <div class="wrap">
+    <div class="panel reveal">
+      <div class="split">
+        <div class="split-text">
+          <span class="eyebrow">USSD &amp; SMS · no smartphone needed</span>
+          <h2>Tenants on any phone can pay by USSD</h2>
+          <p class="lead">Not every tenant wants an app. They dial your complex's short code from any phone, with no internet or data, and TenantFlex answers.</p>
+          {checks([
+            ('A menu on any phone:', 'balance, unpaid bills, pay by M-Pesa, last receipt by SMS, a message to management and the latest notices.'),
+            ('Pay by M-Pesa from the menu:', 'everything due, the oldest bill or any amount. The M-Pesa PIN prompt arrives as soon as the menu closes, and the receipt comes by SMS.'),
+            ('SMS that reaches them:', 'new bills, due dates, overdue reminders, receipts and replies arrive by SMS, with your short code to pay.'),
+            ('Set up by management:', 'add a tenant with just a name and phone number. They get a welcome SMS telling them which code to dial.'),
+          ])}
+          <p class="muted" style="font-size:14px">Runs on your complex's own Africa's Talking account, connected in TenantFlex Manager → Settings → SMS &amp; USSD. Africa's Talking bills SMS and USSD sessions to that account.</p>
+        </div>
+        <div class="phones">
+          {phone('tenant-ussd', 'TenantFlex USSD menu on a basic phone')}
+          {phone('tenant-sms', 'Bill reminder and receipt by SMS')}
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -280,8 +305,8 @@ index = f'''
       <div class="card reveal"><div class="ic">{I('bolt')}</div><h3>Meter-reading billing</h3><p>Electricity and water bills worked out per unit from your readings and rates.</p></div>
       <div class="card reveal"><div class="ic">{I('key')}</div><h3>Automatic rent</h3><p>Every occupied unit billed on your billing day, with your payment terms.</p></div>
       <div class="card reveal"><div class="ic">{I('chart')}</div><h3>Dashboard &amp; statements</h3><p>Collections, arrears, occupancy and a full statement for every tenant.</p></div>
-      <div class="card reveal"><div class="ic">{I('chat')}</div><h3>Messaging</h3><p>One conversation per tenant, visible to the whole management team.</p></div>
-      <div class="card reveal"><div class="ic">{I('megaphone')}</div><h3>Notices</h3><p>Announcements delivered to every tenant's app with one click.</p></div>
+      <div class="card reveal"><div class="ic">{I('chat')}</div><h3>Messaging &amp; notices</h3><p>One conversation per tenant, and announcements that reach every tenant with one click.</p></div>
+      <div class="card reveal"><div class="ic">{I('phone')}</div><h3>USSD &amp; SMS</h3><p>Tenants without the app dial your short code to check bills and pay by M-Pesa, and get bills and receipts by SMS.</p></div>
       <div class="card reveal"><div class="ic">{I('cash')}</div><h3>Office payments</h3><p>Record cash, cheques and bank deposits, receipted on the spot.</p></div>
       <div class="card reveal"><div class="ic">{I('building')}</div><h3>For any business</h3><p>Malls, plazas, office parks and markets, each with its own invite code, currency and rates.</p></div>
       <div class="card reveal"><div class="ic">{I('users')}</div><h3>Team access</h3><p>Add more managers. Everyone sees the same live data.</p></div>
@@ -296,7 +321,7 @@ index = f'''
     <div class="section-head center reveal">
       <span class="eyebrow">Everywhere your tenants are</span>
       <h2>One system, every device</h2>
-      <p class="lead">Both apps run in the browser, on Windows PCs and on Android and iOS phones, each opening with the same black-and-gold splash screen. We install and set them up for your complex.</p>
+      <p class="lead">Both apps run in the browser, on Windows PCs and on Android and iOS phones, each opening with the same black-and-gold splash screen. Tenants without a smartphone use USSD and SMS. We install and set them up for your complex.</p>
     </div>
     <div class="app-icons reveal">
       <figure><img class="app-icon lg" src="assets/img/app-tenant.png" alt="TenantFlex app icon"><figcaption>TenantFlex<span>for tenants</span></figcaption></figure>
@@ -307,6 +332,7 @@ index = f'''
       <div class="platform">{I('windows')}<b>Windows</b><span>Installer &amp; portable .exe</span></div>
       <div class="platform">{I('android')}<b>Android</b><span>.apk</span></div>
       <div class="platform">{I('apple')}<b>iOS</b><span>iPhone &amp; iPad</span></div>
+      <div class="platform">{I('phone')}<b>Any phone</b><span>USSD &amp; SMS</span></div>
       <div class="platform">{I('server')}<b>Server</b><span>Your PC, office server or cloud</span></div>
     </div>
   </div>
@@ -338,7 +364,8 @@ index = f'''
       <details><summary>When does a tenant get their receipt?</summary><p>The moment the payment completes: right after the mobile-money or card approval, as soon as management confirms a bank transfer, or immediately for cash recorded at the office. Receipts are saved in the app and can be downloaded as PDF.</p></details>
       <details><summary>Can we use a currency other than Kenyan Shillings?</summary><p>Yes. KES is the default, and each complex can choose its own currency (USD, UGX, TZS, RWF and others) when it registers, or later in Settings.</p></details>
       <details><summary>Can one company run several complexes?</summary><p>Yes. Each complex is registered separately with its own tenants, units, rates, bank account and invite code.</p></details>
-      <details><summary>Do tenants have to install an app?</summary><p>No. They can use the web version in any browser, or install the Android, iOS or Windows app. It's the same account on every device.</p></details>
+      <details><summary>Do tenants have to install an app?</summary><p>No. They can use the web version in any browser, or install the Android, iOS or Windows app, with the same account on every device. Tenants who don't want an app at all can use USSD and SMS: management adds them with their phone number, and they dial the complex's short code from any phone to check bills and pay by M-Pesa.</p></details>
+      <details><summary>How does a tenant start using USSD?</summary><p>Management adds them in TenantFlex Manager → Tenants → Add tenant → Phone only (SMS &amp; USSD), with their name and phone number. TenantFlex sends a welcome SMS with the complex's short code. When they dial it, TenantFlex recognises their number and shows their own bills. Numbers that management hasn't added are turned away.</p></details>
       <details><summary>Who pays for TenantFlex?</summary><p>The complex management pays one subscription per complex, monthly or annually (annual billing gets 2 months free). Tenants download and use the TenantFlex app for free.</p></details>
       <details><summary>Where is our data stored?</summary><p>On your own TenantFlex server, in a PostgreSQL database. That can be an office PC, your own server or a cloud host.</p></details>
     </div>
@@ -386,6 +413,8 @@ features = f'''
       {fig('tenant-receipt', 'Instant receipt', 'Numbered and itemised, showing the remaining balance. Download as PDF.')}
       {fig('tenant-bank', 'Bank transfer', 'Bank details and a reference, then the tenant\'s bank transaction code.')}
       {fig('tenant-chat', 'Chat with management', 'Messages go straight to the complex office.')}
+      {fig('tenant-ussd', 'USSD on any phone', 'Tenants without the app dial the complex\'s short code to check bills and pay by M-Pesa.')}
+      {fig('tenant-sms', 'Bills & receipts by SMS', 'Reminders with the short code to pay, and a receipt once the payment is in.')}
     </div>
   </div>
 </section>
@@ -400,7 +429,9 @@ features = f'''
       {fig('manager-tenants', 'Tenants', 'Balances, overdue amounts, units and unread messages at a glance.', 'browser')}
       {fig('manager-tenant-statement', 'Tenant statement', 'Every bill and payment for one tenant, with quick actions.', 'browser')}
       {fig('manager-messages', 'Messages', 'One conversation per tenant, with read receipts.', 'browser')}
-      {fig('manager-notices', 'Notices', 'Announcements delivered to every tenant\'s app.', 'browser')}
+      {fig('manager-notices', 'Notices', 'Announcements delivered to every tenant, in the app or by SMS.', 'browser')}
+      {fig('manager-sms', 'SMS & USSD settings', 'Connect your Africa\'s Talking account, choose who gets SMS, send a test and see every SMS sent.', 'browser')}
+      {fig('manager-sms-tenant', 'Phone-only tenants', 'Add a tenant with just a name and phone number. They get a welcome SMS with the code to dial.', 'browser')}
       {fig('manager-units', 'Units & spaces', 'Shops, offices and kiosks, with rent, tenant and meter readings.', 'browser')}
       {fig('manager-settings', 'Settings', 'Currency, billing day, payment terms, utility rates, bank account and team.', 'browser')}
     </div>
@@ -464,6 +495,7 @@ pricing = f'''
       <details><summary>Do tenants pay anything?</summary><p>No. The subscription is paid by the complex management, and tenants use the TenantFlex app for free.</p></details>
       <details><summary>What if we have more units than our plan allows?</summary><p>Move up to the next plan at any time. Enterprise has no unit limit and covers several complexes.</p></details>
       <details><summary>Are payment-provider fees included?</summary><p>No. M-Pesa, Airtel Money, T-Kash and card transaction fees are charged by the provider under your merchant account. Bank transfers and cash have no TenantFlex fees.</p></details>
+      <details><summary>Are SMS and USSD included?</summary><p>The SMS &amp; USSD features are included in every plan. The messages and USSD sessions themselves are billed by Africa's Talking to your complex's own Africa's Talking account, at their rates.</p></details>
       <details><summary>How do we subscribe?</summary><p>Choose a plan and message us on WhatsApp (+254 747 354 677) or email info@pizzatechnologies.co.ke. We'll set up your complex and send the invoice.</p></details>
     </div>
   </div>

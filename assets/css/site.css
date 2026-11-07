@@ -148,7 +148,7 @@ section { padding: 110px 0; position: relative; }
 @media (max-width: 700px) { .panel { padding: 30px 22px; border-radius: 22px; } }
 
 /* Platforms */
-.platforms { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.platforms { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .platform { text-align: center; padding: 26px 14px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
 .platform svg { width: 34px; height: 34px; color: var(--gold-light); margin: 0 auto 12px; }
 .platform b { display: block; }
